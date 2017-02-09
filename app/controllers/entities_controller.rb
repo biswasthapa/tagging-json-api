@@ -11,12 +11,17 @@ class EntitiesController < ApplicationController
   end
 
   def create
-    @entity = Entity.find_or_initialize_by(entity_id: entity_params[:entity_id])
+    begin
+      @entity = Entity.find_or_initialize_by(entity_id: entity_params[:entity_id])
 
-    if @entity.update(entity_type: entity_params[:entity_type], tags: entity_params[:tags].uniq)
-      render :json => {entity: @entity, result: 'success'}
-    else
-      render :json => {errors: @entity.errors, result: 'failed'}
+
+      if @entity.update(entity_type: entity_params[:entity_type], tags: entity_params[:tags].uniq)
+        render :json => {entity: @entity, result: 'success'}
+      else
+        render :json => {errors: @entity.errors, result: 'failed'}
+      end
+    rescue Exception => e
+      render :json => {errors: e.message, result: 'failed'}
     end
   end
 
