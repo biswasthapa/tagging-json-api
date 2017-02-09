@@ -11,6 +11,7 @@ Model
 Specs
  
  spec/requests/stats_spec.rb
+ 
  spec/requests/tags_spec.rb
 
 
