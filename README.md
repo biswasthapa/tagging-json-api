@@ -1,12 +1,15 @@
 # The main files worked on are
 
 Controller
+ 
  controller/entities_controller
 
 Model
+ 
  model/entity.rb
 
 Specs
+ 
  spec/requests/stats_spec.rb
  spec/requests/tags_spec.rb
 
